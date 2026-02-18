@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+  ingest:
+    build: ./ingest
+    env_file: .env
+      
