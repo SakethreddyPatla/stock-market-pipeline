@@ -1,0 +1,21 @@
+name: stock_analytics
+version: "1.0.0"
+config-version: 2
+
+profile: stock_analytics
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+clean-targets:
+  - target 
+  - dbt_packages
+
+models:
+  stock_analytics:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
