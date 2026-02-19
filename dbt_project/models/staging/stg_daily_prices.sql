@@ -16,7 +16,7 @@ flattened AS (
         f.value:"3. low"::DECIMAL(18,4) AS low_price,
         f.value:"4. close"::DECIMAL(18,4) AS close_price,
         f.value:"5. volume"::BIGINT AS volume
-    FROM raw_data r 
+    FROM raw_data r, 
     LATERAL FLATTEN(input => r.api_response:"Time Series (Daily)") f
 ),
 deduplicated AS (
@@ -36,4 +36,4 @@ SELECT
     volume,
     ingestion_date AS loaded_at
 FROM deduplicated
-WHERE row_num = 1;
+WHERE row_num = 1

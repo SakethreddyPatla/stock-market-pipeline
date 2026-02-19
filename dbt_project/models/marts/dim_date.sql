@@ -7,7 +7,7 @@ dates AS (
     SELECT
         date_day,
         YEAR(date_day) AS year,
-        QUATER(date_day) AS quater,
+        QUARTER(date_day) AS quarter,
         MONTH(date_day) AS month,
         MONTHNAME(date_day) AS month_name,
         WEEK(date_day) AS week_of_year,
@@ -18,7 +18,7 @@ dates AS (
             ELSE TRUE
         END AS is_weekday,
         date_day = LAST_DAY(date_day, 'month') AS is_month_end,
-        date_day = LAST_DAY(date_day, 'quater') AS is_quater_end,
+        date_day = LAST_DAY(date_day, 'quarter') AS is_quarter_end,
         date_day = LAST_DAY(date_day, 'year') AS is_year_end
     FROM date_spine
 )

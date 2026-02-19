@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: dim_company
+    description: "Company dimension with sector and industry classification"
+    columns:
+      - name: company_key
+        description: "Surrogate key"
+        tests:
+          - unique
+          - not_null
+      - name: symbol
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: "Date dimension built from actual trading dates"
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_daily_prices
+    description: "Fact table — one row per stock per trading day with OHLCV and derived metrics"
+    columns:
+      - name: price_id
+        description: "Surrogate key (symbol + trade_date)"
+        tests:
+          - unique
+          - not_null
+      - name: company_key
+        tests:
+          - relationships:
+              to: ref('dim_company')
+              field: company_key
+      - name: date_key
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+      - name: close_price
+        tests:
+          - not_null
+
+  - name: analytics_moving_averages
+    description: "Technical analysis — 7/30/90 day SMAs with volume ratios"
+
+  - name: analytics_volatility
+    description: "Rolling annualized volatility at stock and sector level"
+
+  - name: analytics_sector_performance
+    description: "Sector rotation analysis with daily ranking and YTD cumulative returns"
