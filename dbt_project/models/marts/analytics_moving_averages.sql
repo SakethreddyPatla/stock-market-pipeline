@@ -1,4 +1,8 @@
 SELECT
+    symbol,
+    trade_date,
+    close_price,
+    volume,
     AVG(close_price) OVER(
         PARTITION BY symbol ORDER BY trade_date
         ROWS BETWEEN 6 PRECEDING AND CURRENT ROW 
