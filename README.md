@@ -75,22 +75,22 @@ An end-to-end ELT data pipeline that ingests daily stock market data from Alpha 
 ## Analytics & Business Questions
 
 ### 1. Moving Averages (Technical Analysis)
-7-day, 30-day, and 90-day simple moving averages with buy/sell signals when price crosses the 30-day SMA.
+30-day simple moving averages with buy/sell signals when price crosses the 30-day SMA.
 
-![Moving Averages](docs/images/Q1.png)
+![Moving Averages](docs/images/Q2.png)
 
 ### 2. Rolling Volatility
 30-day annualized volatility at both stock and sector level, with high-volatility flags when a stock exceeds 1.5x its sector's volatility.
 
-![Rolling Volatility](docs/images/Q2.png)
+![Rolling Volatility](docs/images/Q3.png)
 
 ### 3. Sector Performance & Rotation
 Daily sector rankings, YTD cumulative returns, and sector rotation analysis across Technology, Financials, Healthcare, Energy, and Consumer Staples.
 
-![Sector Performance & Rotation](docs/images/Q3.png)
+![Sector Performance & Rotation](docs/images/Q1.png)
 
 ### 4. Volume Spike Detection
-Identifies days where trading volume exceeded 2x the 30-day average — often signals major news or institutional activity.
+Identifies days where trading volume exceeded 1x the 30-day average — often signals major news or institutional activity.
 
 ![Volume Spike Detection](docs/images/Q4.png)
 
