@@ -1,0 +1,111 @@
+[2026-02-21T18:03:11.820+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-21T18:03:11.839+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: stock_market_pipeline.ingest_stock_data scheduled__2026-02-19T19:00:00+00:00 [queued]>
+[2026-02-21T18:03:11.847+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: stock_market_pipeline.ingest_stock_data scheduled__2026-02-19T19:00:00+00:00 [queued]>
+[2026-02-21T18:03:11.850+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 3
+[2026-02-21T18:03:11.862+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): ingest_stock_data> on 2026-02-19 19:00:00+00:00
+[2026-02-21T18:03:11.867+0000] {standard_task_runner.py:72} INFO - Started process 195 to run task
+[2026-02-21T18:03:11.873+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'stock_market_pipeline', 'ingest_stock_data', 'scheduled__2026-02-19T19:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/stock_pipeline_dag.py', '--cfg-path', '/tmp/tmp_pz49noc']
+[2026-02-21T18:03:11.877+0000] {standard_task_runner.py:105} INFO - Job 2: Subtask ingest_stock_data
+[2026-02-21T18:03:11.960+0000] {task_command.py:467} INFO - Running <TaskInstance: stock_market_pipeline.ingest_stock_data scheduled__2026-02-19T19:00:00+00:00 [running]> on host 208fa2070a41
+[2026-02-21T18:03:12.051+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='stock_market_pipeline' AIRFLOW_CTX_TASK_ID='ingest_stock_data' AIRFLOW_CTX_EXECUTION_DATE='2026-02-19T19:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-19T19:00:00+00:00'
+[2026-02-21T18:03:12.054+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-21T18:03:12.087+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-02-21T18:03:12.090+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/ingest &&python ingest.py']
+[2026-02-21T18:03:12.099+0000] {subprocess.py:99} INFO - Output:
+[2026-02-21T18:03:14.613+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:14 | INFO    | ==========
+[2026-02-21T18:03:14.615+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:14 | INFO    | Started ingestion pipeline | 5 stocks | mode=compact
+[2026-02-21T18:03:14.617+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:14 | INFO    | Snowflake Connector for Python Version: 4.3.0, Python Version: 3.11.11, Platform: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2026-02-21T18:03:14.618+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:14 | INFO    | Connecting to GLOBAL Snowflake domain
+[2026-02-21T18:03:16.030+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:16 | INFO    | Processing AAPL (Apple Inc.)..
+[2026-02-21T18:03:16.223+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:16 | INFO    | API response keys for AAPL: ['Meta Data', 'Time Series (Daily)']
+[2026-02-21T18:03:16.227+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:16 | INFO    | Fetched 100 daily records for AAPL
+[2026-02-21T18:03:16.912+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:16 | INFO    | loaded AAPL into Snowflake RAW layer
+[2026-02-21T18:03:31.913+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:31 | INFO    | Processing JPM (JPMorgan Chase & Co.)..
+[2026-02-21T18:03:32.083+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:32 | INFO    | API response keys for JPM: ['Information']
+[2026-02-21T18:03:32.086+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:32 | WARNING | API info message: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints
+[2026-02-21T18:03:47.087+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:47 | INFO    | Processing JNJ (Johnson & johnson)..
+[2026-02-21T18:03:47.296+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:47 | INFO    | API response keys for JNJ: ['Meta Data', 'Time Series (Daily)']
+[2026-02-21T18:03:47.299+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:47 | INFO    | Fetched 100 daily records for JNJ
+[2026-02-21T18:03:47.877+0000] {subprocess.py:106} INFO - 2026-02-21 18:03:47 | INFO    | loaded JNJ into Snowflake RAW layer
+[2026-02-21T18:04:02.880+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:02 | INFO    | Processing XOM (ExxonMobil Corp)..
+[2026-02-21T18:04:03.082+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:03 | INFO    | API response keys for XOM: ['Meta Data', 'Time Series (Daily)']
+[2026-02-21T18:04:03.086+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:03 | INFO    | Fetched 100 daily records for XOM
+[2026-02-21T18:04:03.692+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:03 | INFO    | loaded XOM into Snowflake RAW layer
+[2026-02-21T18:04:18.689+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:18 | INFO    | Processing PG (Procter & Gamble Co.)..
+[2026-02-21T18:04:18.979+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:18 | INFO    | API response keys for PG: ['Meta Data', 'Time Series (Daily)']
+[2026-02-21T18:04:18.982+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:18 | INFO    | Fetched 100 daily records for PG
+[2026-02-21T18:04:20.343+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:20 | INFO    | loaded PG into Snowflake RAW layer
+[2026-02-21T18:04:35.750+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:35 | INFO    | ==========
+[2026-02-21T18:04:35.754+0000] {subprocess.py:106} INFO - 2026-02-21 18:04:35 | INFO    | Pipeline complete | Success: 4 | Failed: 1
+[2026-02-21T18:04:35.937+0000] {subprocess.py:110} INFO - Command exited with return code 1
+[2026-02-21T18:04:35.950+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-21T18:04:35.960+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=stock_market_pipeline, task_id=ingest_stock_data, run_id=scheduled__2026-02-19T19:00:00+00:00, execution_date=20260219T190000, start_date=20260221T180311, end_date=20260221T180435
+[2026-02-21T18:04:35.972+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-21T18:04:35.974+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 2 for task ingest_stock_data (Bash command failed. The command returned a non-zero exit code 1.; 195)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-21T18:04:36.011+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-02-21T18:04:36.047+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-21T18:04:36.054+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
