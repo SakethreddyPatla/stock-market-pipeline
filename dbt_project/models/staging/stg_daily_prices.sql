@@ -22,7 +22,7 @@ flattened AS (
 deduplicated AS (
     SELECT
         *,
-        ROW_NUMBER() OVER(PARTITION BY symbol ORDER BY ingestion_date DESC) AS row_num
+        ROW_NUMBER() OVER(PARTITION BY symbol, trade_date ORDER BY ingestion_date DESC) AS row_num
     FROM flattened    
 )
 SELECT
